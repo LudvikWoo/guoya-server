@@ -1,0 +1,34 @@
+{
+  "study": {
+    "student": [
+      {
+        "group": "1",
+        "sno": "s001",
+        "sname": "陈超",
+        "url": "http://127.0.0.1:8083/guoya-client/basicClass/首页.html",
+        "status": "pass"
+      },
+      {
+        "group": "1",
+        "sno": "s001",
+        "sname": "陈超",
+        "url": "http://127.0.0.1:8083/guoya-client/basicClass/首页.html",
+        "status": "pass"
+      },
+      {
+        "group": "1",
+        "sno": "s001",
+        "sname": "陈超",
+        "url": "http://127.0.0.1:8083/guoya-client/basicClass/首页.html",
+        "status": "pass"
+      },
+      {
+        "group": "1",
+        "sno": "s001",
+        "sname": "陈超",
+        "url": "http://127.0.0.1:8083/guoya-client/basicClass/首页.html",
+        "status": "pass"
+      }
+    ]
+  }
+}

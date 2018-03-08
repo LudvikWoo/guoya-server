@@ -1,0 +1,30 @@
+<study>
+	<student>
+		<group>1</group>
+		<sno>s001</sno>
+		<sname>陈超</sname>
+		<url>http://127.0.0.1:8083/guoya-client/basicClass/首页.html</url>
+		<status>pass</status>
+	</student>
+		<student>
+		<group>1</group>
+		<sno>s001</sno>
+		<sname>陈超</sname>
+		<url>http://127.0.0.1:8083/guoya-client/basicClass/首页.html</url>
+		<status>pass</status>
+	</student>
+		<student>
+		<group>1</group>
+		<sno>s001</sno>
+		<sname>陈超</sname>
+		<url>http://127.0.0.1:8083/guoya-client/basicClass/首页.html</url>
+		<status>pass</status>
+	</student>
+		<student>
+		<group>1</group>
+		<sno>s001</sno>
+		<sname>陈超</sname>
+		<url>http://127.0.0.1:8083/guoya-client/basicClass/首页.html</url>
+		<status>pass</status>
+	</student>
+</study>
