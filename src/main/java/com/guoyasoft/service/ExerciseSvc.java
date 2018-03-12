@@ -7,7 +7,7 @@ public class ExerciseSvc {
 		String result = "";
 		// result =
 		// "{\"study\":{\"student\":[{\"group\":\"1\",\"sno\":\"s001\",\"sname\":\"陈超超\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"0\"},{\"group\":\"1\",\"sno\":\"s002\",\"sname\":\"陈超2\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"},{\"group\":\"1\",\"sno\":\"s003\",\"sname\":\"陈超3\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"0\"},{\"group\":\"2\",\"sno\":\"s004\",\"sname\":\"陈超4\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"},{\"group\":\"2\",\"sno\":\"s005\",\"sname\":\"陈超5\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"},{\"group\":\"2\",\"sno\":\"s006\",\"sname\":\"陈超6\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"}]}}";
-		String sql = "select t.sno,t.sname,t.groupid,t.url,t.status from  gy_Exercise t ";
+		String sql = "select t.sno,t.sname,t.groupid,t.url,t.status from  gy_Exercise t order by t.groupid  ";
 		System.out.println(sql);
 		StudyDao dao = new StudyDao();
 		result = dao.selectExercise(sql);
