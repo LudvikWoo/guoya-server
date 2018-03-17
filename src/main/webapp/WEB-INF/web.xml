@@ -17,4 +17,21 @@
   	<servlet-name>studyController</servlet-name>
   	<url-pattern>/studyInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>taskController</servlet-name>
+  	<servlet-class>com.guoyasoft.controller.TaskController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>taskController</servlet-name>
+  	<url-pattern>/taskInfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>summaryController</servlet-name>
+  	<servlet-class>com.guoyasoft.controller.SummaryController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>summaryController</servlet-name>
+  	<url-pattern>/summaryInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

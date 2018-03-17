@@ -2,7 +2,9 @@ package com.guoyasoft.tools;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class JDBCTools {
 	public static Connection getConnection() {
@@ -25,5 +27,27 @@ public class JDBCTools {
 			e.printStackTrace();
 		}
 		return conn;
+	}
+	
+	public static int update(String sql) {
+		System.out.println(sql);
+		int result=0;
+		// 第1步：建立数据库链接
+		Connection conn = JDBCTools.getConnection();
+		// 第2步：写SQL魔板
+		// 第3步：按照真实数据生成执行SQL
+		Statement st;
+		ResultSet set;
+		try {
+			st=conn.createStatement();
+			// 执行拼装好的sql,如果是更新，则返回更新条数
+			result = st.executeUpdate(sql);
+			// 关闭链接
+			st.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
