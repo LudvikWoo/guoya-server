@@ -69,7 +69,7 @@ public class TaskSvc {
 				+ itemDesc
 				+ "',   "
 				+ "    \'0\',                                                                  "
-				+ "    (select max(nvl(t.priority,0)) + 1 from gy_task_item t where t.taskid = \'"
+				+ "    (select nvl(max(t.priority),0) + 1 from gy_task_item t where t.taskid = \'"
 				+ taskId + "\'))";
 		System.out.println(sql);
 		TaskDao dao = new TaskDao();

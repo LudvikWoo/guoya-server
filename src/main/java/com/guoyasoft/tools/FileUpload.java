@@ -28,8 +28,9 @@ public class FileUpload {
     public static HashMap<String, String> fileupload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{  
     	HashMap<String,String> parameters=new HashMap<String,String>();
     	//得到上传文件的保存目录，将上传的文件存放于WEB-INF目录下，不允许外界直接访问，保证上传文件的安全  
-        String savePath = request.getServletContext().getRealPath("\\").replace("server", "client")+"basicClass\\images\\summarizes";  
-        System.out.println(savePath);
+        //String savePath = request.getServletContext().getRealPath("\\").replace("server", "client")+"basicClass\\images\\summarizes";  
+    	String savePath = request.getServletContext().getRealPath("/").replace("guoya-server", "guoya-client")+"basicClass/images/summarizes";  
+        System.out.println("savePath"+savePath);
         File file = new File(savePath);  
         System.out.println(file.getAbsolutePath()); 
         //判断上传文件的保存目录是否存在  
@@ -78,11 +79,14 @@ public class FileUpload {
                    }  
                   //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt  
                   //处理获取到的上传文件的文件名的路径部分，只保留文件名部分  
-                  filename = filename.substring(filename.lastIndexOf("\\")+1);  
+                  filename = filename.substring(filename.lastIndexOf("/")+1);  
                   System.out.println("fileName="+filename);
                   filename=parameters.get("sno")+"_"+parameters.get("summaryDate")+"_"+filename;
-                  String fullPath=savePath + "\\" + filename;
-                  fullPath=fullPath.replaceAll("\\\\", "/");
+                  String fullPath=savePath + "/" + filename;
+                  System.out.println("是否有\\:"+fullPath.indexOf("\\"));
+                  if(fullPath.indexOf("\\")>0){
+                      fullPath=fullPath.replaceAll("\\\\", "/");
+                  }
                   System.out.println("fullpath="+fullPath);
                   String imgPath=fullPath.substring(fullPath.indexOf("webapps")+7);
                   parameters.put("imgPath", imgPath);

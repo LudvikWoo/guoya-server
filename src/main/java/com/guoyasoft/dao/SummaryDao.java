@@ -9,14 +9,14 @@ import com.guoyasoft.tools.JDBCTools;
 
 public class SummaryDao {
 
-	public String querySummaryInfo(String sql, String summaryDate) {
+	public String querySummaryInfo(String sql) {
 		System.out.println(sql);
 		StringBuilder json = new StringBuilder();
 		String result = "";
 		json.append("{");
 		json.append("\"summaries\": {");
 		json.append("\"summaryDate\": {");
-		json.append("\"date\": \""+summaryDate+"\",");
+		json.append("\"date\": \"待定\",");
 		json.append("\"student\": [");
 		
 		// 第1步：建立数据库链接
