@@ -1,5 +1,6 @@
 package com.guoyasoft.service;
 
+import com.guoyasoft.beans.ExcerciseBean;
 import com.guoyasoft.dao.StudyDao;
 
 public class ExerciseSvc {
@@ -7,7 +8,7 @@ public class ExerciseSvc {
 		String result = "";
 		// result =
 		// "{\"study\":{\"student\":[{\"group\":\"1\",\"sno\":\"s001\",\"sname\":\"陈超超\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"0\"},{\"group\":\"1\",\"sno\":\"s002\",\"sname\":\"陈超2\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"},{\"group\":\"1\",\"sno\":\"s003\",\"sname\":\"陈超3\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"0\"},{\"group\":\"2\",\"sno\":\"s004\",\"sname\":\"陈超4\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"},{\"group\":\"2\",\"sno\":\"s005\",\"sname\":\"陈超5\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"},{\"group\":\"2\",\"sno\":\"s006\",\"sname\":\"陈超6\",\"url\":\"http://127.0.0.1:8083/guoya-client/basicClass/首页.html\",\"status\":\"1\"}]}}";
-		String sql = "select t.sno,t.sname,t.groupid,t.url,t.status from  gy_Exercise t order by t.groupid  ";
+		String sql = "select t.sno,t.sname,t.groupid,t.url,t.status from  gy_Exercise t where t.effect_status=0 order by t.groupid ,sno  ";
 		System.out.println(sql);
 		StudyDao dao = new StudyDao();
 		result = dao.selectExercise(sql);
@@ -66,6 +67,17 @@ public class ExerciseSvc {
 		if (sno == null || "".equals(sno) || "null".equals(sno)) {
 			sql = "delete gy_exercise where sno is null";
 		}
+		System.out.println(sql);
+		StudyDao dao = new StudyDao();
+		result = dao.updateUrl(sql);
+		System.out.println(result);
+		return result;
+	}
+
+	public int updateExercise(ExcerciseBean bean) {
+		int result = 0;
+		String sql = "update gy_exercise t set t.status=" + bean.getStatus()
+				+ " where t.sno='" + bean.getSno() + "' ";
 		System.out.println(sql);
 		StudyDao dao = new StudyDao();
 		result = dao.updateUrl(sql);
