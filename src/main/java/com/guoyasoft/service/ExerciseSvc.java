@@ -2,6 +2,7 @@ package com.guoyasoft.service;
 
 import com.guoyasoft.beans.ExcerciseBean;
 import com.guoyasoft.dao.StudyDao;
+import com.guoyasoft.tools.MyStringTools;
 
 public class ExerciseSvc {
 	public String getUrls() {
@@ -76,8 +77,15 @@ public class ExerciseSvc {
 
 	public int updateExercise(ExcerciseBean bean) {
 		int result = 0;
-		String sql = "update gy_exercise t set t.status=" + bean.getStatus()
-				+ " where t.sno='" + bean.getSno() + "' ";
+		String sql ="";
+		if(MyStringTools.isBlank(bean.getStatus()+"")){
+			sql = "update gy_exercise t set t.status=" + bean.getStatus()
+					+ " where t.sno='" + bean.getSno() + "' ";
+		}
+		if(MyStringTools.isBlank(bean.getUrl()+"")){
+			sql = "update gy_exercise t set t.url='" + bean.getUrl()
+					+ "' where t.sno='" + bean.getSno() + "' ";
+		}
 		System.out.println(sql);
 		StudyDao dao = new StudyDao();
 		result = dao.updateUrl(sql);
