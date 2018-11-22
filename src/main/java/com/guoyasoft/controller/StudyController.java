@@ -30,10 +30,11 @@ public class StudyController extends HttpServlet {
 		String result = "无效操作类型！";
 
 		String method = req.getParameter("method");
+		String classCode=req.getParameter("classCode");
 		System.out.println("method=" + method);
 		ExerciseSvc svc = new ExerciseSvc();
 		if ("getUrls".equals(method)) {
-			result = svc.getUrls();
+			result = svc.getUrls(classCode);
 		}else if ("insertExercise".equals(method)) {
 			String sname = req.getParameter("sname");
 			String sno = req.getParameter("sno");
@@ -56,7 +57,7 @@ public class StudyController extends HttpServlet {
 				result = "更新失败!";
 			}
 		} else if ("updateAllStatus".equals(method)) {
-			int count = svc.updateAllStatus();
+			int count = svc.updateAllStatus(classCode);
 			if (count > 0) {
 				result = "更新成功！";
 			} else {
@@ -110,9 +111,9 @@ public class StudyController extends HttpServlet {
 		JsonObject requestJson= classObj.get("request").getAsJsonObject();
 		String method = requestJson.get("method").getAsString();
 		JsonObject student =requestJson.get("student").getAsJsonObject();
-		
-		Gson gs = new Gson();  
-		ExcerciseBean bean = gs.fromJson(student, ExcerciseBean.class);//把JSON字符串转为对象  
+
+		Gson gs = new Gson();
+		ExcerciseBean bean = gs.fromJson(student, ExcerciseBean.class);//把JSON字符串转为对象
 		System.out.println(bean.getSno());
 		ExerciseSvc svc = new ExerciseSvc();
 		if ("updateStudent".equals(method)) {
@@ -122,7 +123,7 @@ public class StudyController extends HttpServlet {
 			} else {
 				result = "更新失败!";
 			}
-		} 
+		}
 		System.out.println(result);
 
 		resp.getWriter().write(result);

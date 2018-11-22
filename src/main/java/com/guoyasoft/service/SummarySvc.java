@@ -8,8 +8,8 @@ import com.guoyasoft.tools.MyStringTools;
 public class SummarySvc {
 
 	public int insertSummary(String sno, String imgPath,String summaryDate) {
-		String sql = " insert into gy_daily_summary (SNO, IMG_PATH, CREATE_TIME, SUMMARY_DATE)"
-					+"values (\'"+sno+"\', \'"+imgPath+"\',sysdate, \'"+summaryDate+"\')" ;
+		String sql = " insert into gy_daily_summary (SNO, IMG_PATH, SUMMARY_DATE)"
+					+"values (\'"+sno+"\', \'"+imgPath+"\', \'"+summaryDate+"\')" ;
 		int result = JDBCTools.update(sql);
 		return result;
 	}
@@ -34,7 +34,7 @@ public class SummarySvc {
 					}
 					if(MyStringTools.isBlank(bean.getTutor())){
 						sql+=" and b.tutor='"+bean.getTutor()+"'";
-					} 
+					}
 					if(MyStringTools.isBlank(bean.getOutstanding())){
 						sql+=" and a.outstanding='"+bean.getOutstanding()+"'";
 					}
@@ -42,6 +42,6 @@ public class SummarySvc {
 		json = dao.querySummaryInfo(sql);
 		return json;
 	}
-	
-	
+
+
 }

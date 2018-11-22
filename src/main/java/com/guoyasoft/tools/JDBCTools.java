@@ -2,21 +2,36 @@ package com.guoyasoft.tools;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.testng.annotations.Test;
 
 public class JDBCTools {
+	// oracle数据库驱动
+	/*
+	private String driver = "oracle.jdbc.driver.OracleDriver";
+	private String url = "jdbc:oracle:thin:@47.98.226.232:3308/guoya_test";
+	*/
+	// mysql数据库驱动
+	// 第1步：选择驱动，有mysql的，有orace，类似不同版本的浏览器
+	private static String driver = "com.mysql.jdbc.Driver";
+	// 第2步：提供链接地址，哪台主机，哪个应用port，哪个实例（类似tomcat的应用名）
+	private static String url = "jdbc:mysql://pro.guoyasoft.com:3306/guoya_official_dev?useUnicode=true&characterEncoding=utf8";
+	// 第3步：登录，用户名、密码
+	private static String username = "root";
+	// 第4步：建立链接，固定写法
+	private static String password = "pro_root";
+
+	public static Connection conn;
+	public static PreparedStatement ps;
+	public static ResultSet rs;
+	public static Statement st;
+
 	public static Connection getConnection() {
-		// 第1步：选择驱动，有mysql的，有orace，类似不同版本的浏览器
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		// 第2步：提供链接地址，哪台主机，哪个应用port，哪个实例（类似tomcat的应用名）
-		String url = "jdbc:oracle:thin:@120.132.0.117:1521:CCSDB1";// 127.0.0.1是本机地址，XE是精简版Oracle的默认数据库名
-		// 第3步：登录，用户名、密码
-		String username = "shuccs1o";
-		String password = "shuccs1o";
-		// 第4步：建立链接，固定写法
-		Connection conn = null;
+
+
 		try {
 			Class.forName(driver); // classLoader,加载对应驱动
 			conn = (Connection) DriverManager.getConnection(url, username,
@@ -28,7 +43,7 @@ public class JDBCTools {
 		}
 		return conn;
 	}
-	
+
 	public static int update(String sql) {
 		System.out.println(sql);
 		int result=0;
