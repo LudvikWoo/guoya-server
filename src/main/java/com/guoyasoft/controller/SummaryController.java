@@ -70,14 +70,14 @@ public class SummaryController extends HttpServlet {
 				String summaryDate = req.getParameter("summaryDate");
 				String groupId = req.getParameter("groupId");
 				String tutor = req.getParameter("tutor");
-				String outstanding = req.getParameter("outstanding");
+				/*String outstanding = req.getParameter("outstanding");*/
 				GyDailySummary bean = new GyDailySummary();
 				bean.setSno(sno);
 				bean.setSname(sname);
 				bean.setGroupId(groupId);
 				bean.setSummaryDate(summaryDate);
 				bean.setTutor(tutor);
-				bean.setOutstanding(outstanding);
+				/*bean.setOutstanding(outstanding);*/
 				result = svc.querySummaryInfo(bean);
 			}
 		} catch (Exception e) {

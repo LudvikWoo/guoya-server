@@ -34,10 +34,11 @@ public class SummarySvc {
 					}
 					if(MyStringTools.isBlank(bean.getTutor())){
 						sql+=" and b.tutor='"+bean.getTutor()+"'";
-					}
+					}/*
 					if(MyStringTools.isBlank(bean.getOutstanding())){
 						sql+=" and a.outstanding='"+bean.getOutstanding()+"'";
-					}
+					}*/
+    System.out.println(sql);
 				SummaryDao dao = new SummaryDao();
 		json = dao.querySummaryInfo(sql);
 		return json;
